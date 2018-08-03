@@ -3,4 +3,4 @@ Hash table implementation
 
 Lab Requirements:
 
-n this lab you will implement a hash table with linear probing and perform simulationsto observe its performance.  The hash table will store integers.  The hash function to beused ish(x) =x%M(the remainder after dividingxbyM), whereMis the size of thehash table.  The set of possible keysxis the set of positive integers representable by theintdata type.  You must write aJavaclassHashTableLinand a classTestHashTablefor testing and for measuring its performance.
+In this lab you will implement a hash table with linear probing and perform simulations to observe its performance.  The hash table will store integers.  The hash function to be used is h(x) =x%M (the remainder after dividingxbyM) , where M is the size of the hash table.  The set of possible keys x is the set of positive integers representable by the int data type.  You must write a Java class HashTableLin and a class TestHashTable for testing and for measuring its performance.
