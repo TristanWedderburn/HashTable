@@ -1,0 +1,59 @@
+package HashTableLin;
+
+import java.util.Random;
+
+public class TestHashTable {
+
+    public static void main(String[] args) {
+        //System.out.println("Success test: ");
+        //probesuccess();
+        System.out.println("\nTest cases: ");
+        HashTableLin test2 = new HashTableLin(3, 0.5);
+       System.out.println("\nsize: "+test2.getSize());
+        Integer[] testvalues = {1,2};
+        for(int i =0;i<testvalues.length;i++){
+            System.out.println(testvalues[i]);
+            test2.insert(testvalues[i]);
+        }
+         System.out.println("getSize"+test2.getSize());
+        
+        System.out.println("\n1: duplicate insertion: ");
+        test2.printKeysAndIndexes();
+        System.out.println("");
+        test2.insert(2);
+        test2.printKeysAndIndexes();
+        System.out.println("\n\n2: rehash test");
+        System.out.println("size: "+test2.getSize());
+        Integer[] testvalues2 = {3,4};
+        for(int i =0;i<testvalues2.length;i++){
+            System.out.println(testvalues2[i]);
+            test2.insert(testvalues2[i]);
+        }
+    }
+
+    private static void probesuccess() {
+        int totalp;
+        double load1 = 0.1;
+        for (int l = 0; l < 9; l++) {
+            totalp = 0;
+            HashTableLin test1=null;
+            double s=0.0;
+            for (int i = 0; i < 100; i++) {        
+            test1=new HashTableLin(100000, load1);
+            s= 0.5 * (1 + (1 / (1 - test1.getLoad())));
+                for (int j = 0; test1.getKeys() < 100000; j++) {
+                    Random random = new Random();
+                    totalp += test1.insert2(random.nextInt(1000000000));
+                }
+            }
+            System.out.println("total p: "+totalp);
+            totalp=totalp/100;
+            System.out.println("total p/100: "+totalp);
+            System.out.println("keys: "+test1.getKeys());
+            double averagep = ((double)totalp) / test1.getKeys();
+            System.out.println("Theoretical @ "+load1+": " + s);
+            System.out.println("Measurement @ "+load1+": " + averagep);
+            load1+=0.1;
+        }
+    }   
+}
